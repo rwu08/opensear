@@ -1,3 +1,6 @@
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/rwu08/opensear/workflows/R-CMD-check/badge.svg)](https://github.com/rwu08/opensear/actions)
+<!-- badges: end -->
 ## Overview 
 
 The OpenSeaR package contains datasets and functions to use in conjunction with the OpenSea API. 
