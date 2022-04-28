@@ -65,8 +65,11 @@ collection_one_owner<-read_os_collection(api_key="",asset_owner="")
 ```{r,include=FALSE}
 library(ggplot2)
 library(opensear)
+library(tidyverse)
 
 mayc_avg_price$date<-as.Date(mayc_avg_price$date, "%d-%b-%y")
+mayc_avg_price_filtered<-mayc_avg_price%>%
+  filter(date<="2021-09-30")
 ```
 
 ```{r,warning=FALSE, message=FALSE}
@@ -76,6 +79,8 @@ example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = 
   scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
 
 example_plot
+
+
 
 ```
 
