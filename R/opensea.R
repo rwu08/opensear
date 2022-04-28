@@ -1,7 +1,9 @@
-#' Retrieve data from OpenSea
+#' Retrieve collection data supported by OpenSea API
 #' @param queryString a list of options
-#' @param api_key OpenSEA API key
+#' @param api_key OpenSea API key
+#' @param asset_owner Asset owner contract address
 #' @param ... currently ignored
+
 #' @references https://docs.opensea.io/reference/collection-model
 #' @importFrom dplyr %>%
 #' @export
@@ -10,12 +12,14 @@
 #' read_os_collection()
 #' read_os_collection(list(limit = "20"))
 #' read_os_collection(api_key = "6dd0b79cbb934d72853ad157a14f78ca")
+#' read_os_collection(asset_owner = "0x148089038088cC49CDcF26e0f96776c25e5CfACd")
 
-read_os_collection <- function(
-  queryString = list(
-    offset = "0",
-    limit = "300"
-  ), api_key = NULL, asset_owner=NULL,...) {
+
+read_os_collection <- function(queryString = list(offset = "0",
+                                                  limit = "300"),
+                               api_key = NULL,
+                               asset_owner = NULL,
+                               ...) {
   url <- "https://api.opensea.io/api/v1/collections"
 
   if (!is.null(api_key)) {
@@ -23,10 +27,10 @@ read_os_collection <- function(
   } else {
     config_list = list()
   }
-  if(!is.null(asset_owner)){
-    config_list=list(asset_owner)
+  if (!is.null(asset_owner)) {
+    config_list = list(asset_owner)
   } else{
-    config_list=list()
+    config_list = list()
   }
 
   response <- httr::GET(
@@ -44,4 +48,3 @@ read_os_collection <- function(
     jsonlite::flatten() %>%
     tibble::as_tibble()
 }
-

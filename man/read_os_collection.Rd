@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensea.R
 \name{read_os_collection}
 \alias{read_os_collection}
-\title{Retrieve data from OpenSea}
+\title{Retrieve collection data supported by OpenSea API}
 \source{
 OpenSea
 }
@@ -10,23 +10,27 @@ OpenSea
 read_os_collection(
   queryString = list(offset = "0", limit = "300"),
   api_key = NULL,
+  asset_owner = NULL,
   ...
 )
 }
 \arguments{
 \item{queryString}{a list of options}
 
-\item{api_key}{OpenSEA API key}
+\item{api_key}{OpenSea API key}
+
+\item{asset_owner}{Asset owner contract address}
 
 \item{...}{currently ignored}
 }
 \description{
-Retrieve data from OpenSea
+Retrieve collection data supported by OpenSea API
 }
 \examples{
 read_os_collection()
 read_os_collection(list(limit = "20"))
 read_os_collection(api_key = "6dd0b79cbb934d72853ad157a14f78ca")
+read_os_collection(asset_owner = "0x148089038088cC49CDcF26e0f96776c25e5CfACd")
 }
 \references{
 https://docs.opensea.io/reference/collection-model
