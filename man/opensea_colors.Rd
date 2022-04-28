@@ -3,9 +3,7 @@
 \docType{data}
 \name{opensea_colors}
 \alias{opensea_colors}
-\title{References:
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
-OpenSea official colors}
+\title{OpenSea official colors}
 \format{
 An object of class \code{character} of length 4.
 }
@@ -13,8 +11,6 @@ An object of class \code{character} of length 4.
 opensea_colors
 }
 \description{
-References:
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
 OpenSea official colors
 }
 \keyword{datasets}

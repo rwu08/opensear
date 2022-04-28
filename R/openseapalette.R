@@ -1,5 +1,4 @@
-#' References:
-#' https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+
 #' OpenSea official colors
 opensea_colors<-c(`dark sea`="#1868B7",
                    `sea blue`="#2081E2",
@@ -8,9 +7,7 @@ opensea_colors<-c(`dark sea`="#1868B7",
                    )
 
 #' Function to extract OpenSea colors as hex codes
-#'
 #' @param ... Character names of opensea_colors
-#'
 opensea_cols <- function(...) {
   cols <- c(...)
 
@@ -29,7 +26,6 @@ opensea_palettes <- list(
 
 
 #' Return function to interpolate an OpenSea color palette
-#'
 #' @param palette Character name of palette in OpenSea color palette
 #' @param reverse Boolean indicating whether the palette should be reversed
 #' @param ... Additional arguments to pass to colorRampPalette()

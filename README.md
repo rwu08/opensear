@@ -28,6 +28,13 @@ Functions inside the package include:
     owner address and converts JSON format API call result into
     dataframe
 
+-   `add_logo`: Adds OpenSea logo to ggplot object
+
+-   `scale_color_opensea`: Adds OpenSea color palette to point/line
+    ggplot
+
+-   `scale_fill_opensea`: Adds OpenSea color palette to for fill option
+
 ## Installation
 
 Install development version from GitHub:
@@ -50,3 +57,23 @@ library(opensear)
 total_collection<-read_os_collection(api_key="")
 collection_one_owner<-read_os_collection(api_key="",asset_owner="")
 ```
+
+#### Create graph with OpenSea Palette
+
+``` r
+example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume))+
+  geom_point()+
+  scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
+
+example_plot
+```
+
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+#### Add OpenSea logo to graphs
+
+``` r
+add_logo(example_plot)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
