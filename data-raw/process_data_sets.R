@@ -19,7 +19,11 @@ mayc_assets<-
 usethis::use_data(mayc_assets, overwrite = TRUE)
 
 
-
+mayc_avg_price<-
+  "data-raw/mutantapeyachtclub.csv"%>%
+  read_csv()%>%
+  clean_names()
+usethis::use_data(mayc_avg_price,overwrite = TRUE)
 
 
 

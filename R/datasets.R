@@ -16,3 +16,13 @@
 #'  \item{asset_permalink}{The link to the Opensea asset}
 #'}
 "mayc_assets"
+
+#' Mutant Ape Yacht Club Average Price
+#'@format A data frame with 227 entries, one entry for each day:
+#'\describe{
+#'  \item{date}{Date}
+#'  \item{avgprice}{Average price of asset within MAYC collection}
+#'  \item{volume}{Quantity of ETH traded during that day}
+#'  \item{numsales}{Number of assets sold during that day}
+#'}
+"mayc_avg_price"

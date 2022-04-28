@@ -19,4 +19,8 @@ Imports:
     httr,
     jsonlite,
     purrr,
-    tibble
+    tibble,
+    grDevices,
+    ggplot2,
+    gridExtra,
+    png

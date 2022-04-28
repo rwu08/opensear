@@ -14,8 +14,15 @@ library(httr)
 library(xml2)
 library(dplyr)
 library(rvest)
+library(tidyverse)
+library(patchwork)
+
+mayc_avg_price$date<-as.Date(mayc_avg_price$date, "%d-%b-%y")
+p1<-ggplot(data=mayc_avg_price,aes(x=date,y=avgprice))+geom_line()+scale_fill_opensea()
 
 
+
+add_logo(p1)
 test<-read_os_collection(api_key = "6dd0b79cbb934d72853ad157a14f78ca",asset_owner="0x148089038088cC49CDcF26e0f96776c25e5CfACd")
 
 

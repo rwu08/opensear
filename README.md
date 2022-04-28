@@ -1,9 +1,16 @@
 <!-- badges: start -->
   [![R-CMD-check](https://github.com/rwu08/opensear/workflows/R-CMD-check/badge.svg)](https://github.com/rwu08/opensear/actions)
 <!-- badges: end -->
+
 ## Overview 
 
-The OpenSeaR package contains datasets and functions to use in conjunction with the OpenSea API. 
+The OpenSeaR package contains datasets and functions to use in conjunction with the [OpenSea API](https://docs.opensea.io/reference/api-overview). The response from the API is cleaned from the JSON format and transformed into a clean dataframe. 
+
+The package also contains some sample data from [Mutant Ape Yacht Club](https://opensea.io/collection/mutant-ape-yacht-club) which contains event data for 85 unique assets. In addition, sample data containing historical average price of some popular collections are also included. 
+
+Functions inside the package include:
+
+* `read_os_collection`: Takes required API key and optional asset owner address and converts JSON format API call result into dataframe
 
 ## Installation 
 
@@ -19,7 +26,12 @@ remotes::install_github("rwu08/opensear")
 
 ``` r
 library(opensear)
-#Returns dataset with 85 assets from the collection Mutant Ape Yacht Club. 
-View(mayc_assets)
 
 ```
+#### Retrieve data from OpenSea API 
+``` r
+total_collection<-read_os_collection(api_key="")
+collection_one_owner<-read_os_collection(api_key="",asset_owner="")
+```
+
+
