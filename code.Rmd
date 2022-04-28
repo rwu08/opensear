@@ -15,24 +15,9 @@ library(xml2)
 library(dplyr)
 library(rvest)
 
-url <- "https://api.opensea.io/api/v1/assets"
 
-queryString <- list(
-  order_direction = "desc",
-  limit = "20",
-  include_orders = "false")
+test<-read_os_collection(api_key = "6dd0b79cbb934d72853ad157a14f78ca",asset_owner="0x148089038088cC49CDcF26e0f96776c25e5CfACd")
 
-response <- VERB("GET", url = "https://docs.opensea.io/reference/getting-assets", add_headers( X_API_KEY = '6dd0b79cbb934d72853ad157a14f78ca'), query = queryString, content_type("application/octet-stream"), accept("application/json"))
 
-response <- content(response, as = "text") %>% 
-  read_html() 
-
-str(response)
-
-Nodes <- html_nodes(response, "table")
-
-pop <- html_table(Nodes, header = TRUE, fill = TRUE)[[1]]
-as.data.frame(pop)
-#  as.data.frame()
 ```
 
