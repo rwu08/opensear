@@ -24,3 +24,7 @@ Imports:
     ggplot2,
     gridExtra,
     png
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

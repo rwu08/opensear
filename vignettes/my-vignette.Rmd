@@ -1,0 +1,51 @@
+---
+title: "OpenSeaR Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(opensear)
+```
+
+#### Retrieve data from OpenSea API 
+
+
+```{r, message=FALSE, eval=FALSE}
+total_collection<-read_os_collection(api_key="")
+collection_one_owner<-read_os_collection(api_key="",asset_owner="")
+```
+
+#### Create graph with OpenSea Palette
+```{r,include=FALSE}
+library(ggplot2)
+library(opensear)
+library(tidyverse)
+
+mayc_avg_price$date<-as.Date(mayc_avg_price$date, "%d-%b-%y")
+mayc_avg_price_filtered<-mayc_avg_price%>%
+  filter(date<="2021-09-30")
+```
+
+```{r,warning=FALSE, message=FALSE}
+example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume))+
+  geom_point()+
+  scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
+
+example_plot
+```
+
+#### Add OpenSea logo to graphs
+```{r,warning=FALSE, message=FALSE}
+add_logo(example_plot)
+```
