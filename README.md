@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# openseaR <img src="hex.png" align="right" height="139" />
+# openseaR <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -24,16 +24,17 @@ included.
 
 Functions inside the package include:
 
--   `read_os_collection`: Takes required API key and optional asset
+-   `read_os_collection()`: Takes required API key and optional asset
     owner address and converts JSON format API call result into
     dataframe
 
--   `add_logo`: Adds OpenSea logo to ggplot object
+-   `add_logo()`: Adds OpenSea logo to ggplot object
 
--   `scale_color_opensea`: Adds OpenSea color palette to point/line
+-   `scale_color_opensea()`: Adds OpenSea color palette to point/line
     ggplot
 
--   `scale_fill_opensea`: Adds OpenSea color palette to for fill option
+-   `scale_fill_opensea()`: Adds OpenSea color palette to for fill
+    option
 
 ## Installation
 
@@ -54,21 +55,28 @@ library(opensear)
 #### Retrieve data from OpenSea API
 
 ``` r
-total_collection<-read_os_collection(api_key="")
-collection_one_owner<-read_os_collection(api_key="",asset_owner="")
+total_collection <- read_os_collection()
+collection_one_owner <- read_os_collection(asset_owner = "")
 ```
 
 #### Create graph with OpenSea Palette
 
 ``` r
-example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume))+
-  geom_point()+
-  scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
+example_plot <- ggplot(
+  data = mayc_avg_price, 
+  aes(x = date, y = avgprice, color = volume)
+) +
+  geom_point() +
+  scale_color_opensea(
+    palette = "dark", 
+    discrete = FALSE, 
+    reverse = TRUE
+  )
 
 example_plot
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-gfm/ex1-1.png)<!-- -->
 
 #### Add OpenSea logo to graphs
 
@@ -76,4 +84,4 @@ example_plot
 add_logo(example_plot)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/figure-gfm/ex2-1.png)<!-- -->
