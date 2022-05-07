@@ -25,13 +25,13 @@ The package also contains some sample data from [Mutant Ape Yacht Club](https://
 
 Functions inside the package include:
 
-* `read_os_collection`: Takes required API key and optional asset owner address and converts JSON format API call result into dataframe
+* `read_os_collection()`: Takes required API key and optional asset owner address and converts JSON format API call result into dataframe
 
-* `add_logo`: Adds OpenSea logo to ggplot object
+* `add_logo()`: Adds OpenSea logo to ggplot object
 
-* `scale_color_opensea`: Adds OpenSea color palette to point/line ggplot 
+* `scale_color_opensea()`: Adds OpenSea color palette to point/line ggplot 
 
-* `scale_fill_opensea`: Adds OpenSea color palette to for fill option 
+* `scale_fill_opensea()`: Adds OpenSea color palette to for fill option 
 
 ## Installation 
 
@@ -41,7 +41,6 @@ Install development version from GitHub:
 # If you haven't installed remotes yet, do so:
 # install.packages("remotes")
 remotes::install_github("rwu08/opensear")
-
 ```
 
 
@@ -57,36 +56,36 @@ library(opensear)
 
 
 ```{r, message=FALSE, eval=FALSE}
-total_collection<-read_os_collection(api_key="")
-collection_one_owner<-read_os_collection(api_key="",asset_owner="")
+total_collection <- read_os_collection()
+collection_one_owner <- read_os_collection(asset_owner = "")
 ```
 
 #### Create graph with OpenSea Palette
 ```{r,include=FALSE}
-library(ggplot2)
 library(opensear)
 library(tidyverse)
 
-mayc_avg_price$date<-as.Date(mayc_avg_price$date, "%d-%b-%y")
-mayc_avg_price_filtered<-mayc_avg_price%>%
-  filter(date<="2021-09-30")
+mayc_avg_price$date <- as.Date(mayc_avg_price$date, "%d-%b-%y")
+mayc_avg_price_filtered <- mayc_avg_price %>%
+  filter(date <= "2021-09-30")
 ```
 
-```{r,warning=FALSE, message=FALSE}
-
-example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume))+
-  geom_point()+
-  scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
+```{r ex1, warning=FALSE, message=FALSE}
+example_plot <- ggplot(
+  data = mayc_avg_price, 
+  aes(x = date, y = avgprice, color = volume)
+) +
+  geom_point() +
+  scale_color_opensea(
+    palette = "dark", 
+    discrete = FALSE, 
+    reverse = TRUE
+  )
 
 example_plot
-
-
-
 ```
 
 #### Add OpenSea logo to graphs
-```{r,warning=FALSE, message=FALSE}
-
+```{r ex2, warning=FALSE, message=FALSE}
 add_logo(example_plot)
-
 ```
