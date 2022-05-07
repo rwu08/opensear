@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 5
 )
 ```
 
@@ -22,24 +23,23 @@ library(opensear)
 
 
 ```{r, message=FALSE, eval=FALSE}
-total_collection<-read_os_collection(api_key="")
-collection_one_owner<-read_os_collection(api_key="",asset_owner="")
+total_collection <- read_os_collection(api_key = "")
+collection_one_owner <- read_os_collection(api_key = "", asset_owner = "")
 ```
 
 #### Create graph with OpenSea Palette
 ```{r,include=FALSE}
-library(ggplot2)
 library(opensear)
 library(tidyverse)
 
-mayc_avg_price$date<-as.Date(mayc_avg_price$date, "%d-%b-%y")
-mayc_avg_price_filtered<-mayc_avg_price%>%
-  filter(date<="2021-09-30")
+mayc_avg_price$date <- as.Date(mayc_avg_price$date, "%d-%b-%y")
+mayc_avg_price_filtered <- mayc_avg_price %>%
+  filter(date <= "2021-09-30")
 ```
 
 ```{r,warning=FALSE, message=FALSE}
-example_plot<-ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume))+
-  geom_point()+
+example_plot <- ggplot(data = mayc_avg_price, aes(x = date, y = avgprice, color = volume)) +
+  geom_point() +
   scale_color_opensea(palette = "dark", discrete = FALSE, reverse = TRUE)
 
 example_plot
