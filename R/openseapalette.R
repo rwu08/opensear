@@ -91,6 +91,7 @@ get_png <- function(filename) {
 #' Place logo PNG
 #' @param filename File name of logo in PNG format
 #' @param ... Additional arguments
+#' @import ggplot2
 #' @importFrom ggplot2 ggplot
 #'
 

@@ -4,3 +4,4 @@
 ^code\.Rmd$
 ^\.github$
 ^README\.Rmd$
+^README_files.*
