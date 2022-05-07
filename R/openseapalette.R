@@ -106,5 +106,9 @@ opensea_logo <- function(filename, ...) {
 #' @param ... Additional arguments
 #' @export
 add_logo <- function(p1, ...) {
-  gridExtra::grid.arrange(p1, opensea_logo("logo.png"), heights = c(.93, .07))
+  gridExtra::grid.arrange(
+    p1,
+    opensea_logo(system.file("logo.png", package = "opensear")),
+    heights = c(.93, .07)
+  )
 }
